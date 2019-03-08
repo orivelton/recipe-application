@@ -13,11 +13,11 @@ class App extends Component {
   }
   
   getRecipe = async (e) => {
-    //const recipeName = e.target.elements.recipeName.value;
     e.preventDefault();
-    const api_call= await fetch(`http://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken&count=10`);
+    const recipeName = e.target.elements.recipeName.value;
+    const api_call= await fetch(`http://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`);
     const data = await api_call.json();
-    
+    console.log(data);
     this.setState({
       recipes: data.recipes
     });
@@ -36,7 +36,10 @@ class App extends Component {
         {
           this.state.recipes.map((recipe) => {
             return (
-              <p key={ recipe.recipe_id }>{ recipe.title }</p>
+              <div key={ recipe.recipe_id }>
+                <img src={recipe.image_url} alt={recipe.title} title={recipe.title} />
+                <p>{ recipe.title }</p>
+              </div>
             )
           })
         }
