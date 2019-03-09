@@ -1,0 +1,16 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 40px;
+  &__recipes{
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 33%;
+    margin: 10px auto;
+    border: 1px solid #696969;
+    padding: 10px;
+    border-radius: 4px;
+  }
+}
